@@ -1,0 +1,6 @@
+include 'tasac/experiments/tasac_1td/tasac_1td_manipulation.gin'
+
+TasacAlgorithm.critic_loss_ctor=@TASACTDLoss
+TASACTDLoss.gamma=0.98
+
+TrainerConfig.mini_batch_length=4

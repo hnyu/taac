@@ -1,4 +1,4 @@
-include 'experiments/sac/sac_fetch.gin'
+include 'tasac/experiments/sac/sac_manipulation.gin'
 
 import alf.algorithms.tasac_algorithm
 

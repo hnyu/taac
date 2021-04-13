@@ -1,4 +1,4 @@
-include 'experiments/sac/sac_locomotion.gin'
+include 'tasac/experiments/sac/sac_locomotion.gin'
 
 import alf.algorithms.tasac_algorithm
 

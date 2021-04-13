@@ -1,4 +1,4 @@
-include 'experiments/sac/sac_carla.gin'
+include 'tasac/experiments/sac/sac_terrain.gin'
 
 import alf.algorithms.tasac_algorithm
 
@@ -8,11 +8,19 @@ TasacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
 TasacAlgorithm.critic_network_cls=@critic/CriticNetwork
 TasacAlgorithm.target_update_tau=0.005
 
+TasacAlgorithm.critic_loss_ctor=@OneStepTDLoss
+
 beta/calc_default_target_entropy.min_prob=0.05
 action/calc_default_target_entropy.min_prob=0.1
 TasacAlgorithm.target_entropy=(
     @beta/calc_default_target_entropy,
     @action/calc_default_target_entropy)
 
-TasacAlgorithm.critic_loss_ctor=@OneStepTDLoss
+#TasacAlgorithm.observations_buffer=True
+
+#TrainerConfig.mini_batch_length=6
+
 TasacAlgorithm.use_entropy_reward=False
+
+TrainerConfig.temporally_independent_train_step=True
+TrainerConfig.use_rollout_state=True

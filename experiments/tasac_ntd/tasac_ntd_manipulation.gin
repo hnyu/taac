@@ -1,4 +1,4 @@
-include 'experiments/tasac_1td/tasac_1td_fetch.gin'
+include 'tasac/experiments/tasac_1td/tasac_1td_manipulation.gin'
 
 TasacAlgorithm.critic_loss_ctor=@TDLoss
 TDLoss.gamma=0.98
