@@ -1,0 +1,18 @@
+include 'experiments/sac/sac_carla.gin'
+
+import alf.algorithms.tasac_algorithm
+
+Agent.rl_algorithm_cls=@TasacAlgorithm
+
+TasacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
+TasacAlgorithm.critic_network_cls=@critic/CriticNetwork
+TasacAlgorithm.target_update_tau=0.005
+
+beta/calc_default_target_entropy.min_prob=0.05
+action/calc_default_target_entropy.min_prob=0.1
+TasacAlgorithm.target_entropy=(
+    @beta/calc_default_target_entropy,
+    @action/calc_default_target_entropy)
+
+TasacAlgorithm.critic_loss_ctor=@OneStepTDLoss
+TasacAlgorithm.use_entropy_reward=False

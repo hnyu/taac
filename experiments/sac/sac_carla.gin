@@ -1,0 +1,15 @@
+include 'sac.gin'
+include 'experiments/common/carla.gin'
+
+Agent.representation_learner_cls=@encoder/EncodingAlgorithm
+Agent.optimizer=@AdamTF()
+
+SacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
+SacAlgorithm.critic_network_cls=@critic/CriticNetwork
+
+sac/calc_default_target_entropy.min_prob=0.1
+SacAlgorithm.target_entropy=@sac/calc_default_target_entropy
+SacAlgorithm.target_update_tau=0.005
+SacAlgorithm.use_parallel_network=True
+
+SacAlgorithm.only_train_one_step=True

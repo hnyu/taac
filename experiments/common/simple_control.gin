@@ -1,0 +1,37 @@
+# environment config
+# "MountainCarContinuous-v0", "LunarLanderContinuous-v2", "InvertedDoublePendulum-v2"
+create_environment.num_parallel_environments=1
+
+AdamTF.lr=1e-4
+
+hidden_layers=(256, 256)
+
+actor/ActorDistributionNetwork.fc_layer_params=%hidden_layers
+actor/ActorDistributionNetwork.continuous_projection_net_ctor=@NormalProjectionNetwork
+NormalProjectionNetwork.state_dependent_std=True
+NormalProjectionNetwork.squash_mean=False
+NormalProjectionNetwork.scale_distribution=True
+NormalProjectionNetwork.std_transform=@clipped_exp
+
+critic/CriticNetwork.joint_fc_layer_params=%hidden_layers
+
+TrainerConfig.temporally_independent_train_step=True
+TrainerConfig.use_rollout_state=True
+RewardNormalizer.clip_value=5.0
+TrainerConfig.data_transformer_ctor=[@RewardNormalizer]
+TrainerConfig.initial_collect_steps=10000
+TrainerConfig.mini_batch_length=2
+TrainerConfig.unroll_length=1
+TrainerConfig.mini_batch_size=256
+TrainerConfig.num_updates_per_train_iter=1
+TrainerConfig.whole_replay_buffer_training=False
+TrainerConfig.clear_replay_buffer=False
+TrainerConfig.num_iterations=0
+TrainerConfig.num_env_steps=100000
+TrainerConfig.num_checkpoints=2
+TrainerConfig.evaluate=True
+TrainerConfig.eval_interval=2500
+TrainerConfig.num_eval_episodes=10
+TrainerConfig.debug_summaries=True
+TrainerConfig.summary_interval=1000
+TrainerConfig.replay_buffer_length=100000

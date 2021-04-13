@@ -1,0 +1,17 @@
+include 'sac.gin'
+include 'experiments/common/locomotion.gin'
+
+Agent.optimizer=@AdamTF()
+
+# environment config
+SacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
+SacAlgorithm.critic_network_cls=@critic/CriticNetwork
+SacAlgorithm.use_parallel_network=True
+SacAlgorithm.target_update_tau=0.005
+sac/calc_default_target_entropy.min_prob=0.184
+SacAlgorithm.target_entropy=@sac/calc_default_target_entropy
+
+SacAlgorithm.only_train_one_step=True
+
+import alf.experience_replayers.replay_buffer
+ReplayBuffer.with_replacement=True

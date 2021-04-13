@@ -1,0 +1,5 @@
+include 'experiments/tasac_1td/tasac_1td_locomotion.gin'
+
+TasacAlgorithm.critic_loss_ctor=@TDLoss
+TDLoss.td_lambda=1.
+TrainerConfig.mini_batch_length=4

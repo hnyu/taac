@@ -1,0 +1,7 @@
+include 'experiments/tasac_1td/tasac_1td_fetch.gin'
+
+TasacAlgorithm.critic_loss_ctor=@TDLoss
+TDLoss.gamma=0.98
+TDLoss.td_lambda=1.
+
+TrainerConfig.mini_batch_length=4

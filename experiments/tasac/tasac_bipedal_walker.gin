@@ -1,0 +1,12 @@
+include 'experiments/tasac_1td/tasac_1td_bipedal_walker.gin'
+
+TasacAlgorithm.critic_loss_ctor=@TASACTDLoss
+TrainerConfig.mini_batch_length=6
+
+###### VISUALIZATION #####
+#ObservationsBuffer.capacity=50000
+#TasacAlgorithm.observations_buffer=True
+#TrainerConfig.initial_collect_steps=100000
+#TrainerConfig.num_env_steps=50000
+#TrainerConfig.evaluate=False
+#TrainerConfig.num_checkpoints=1
