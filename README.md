@@ -18,7 +18,7 @@ pip install -e .
 
 On top of the basic ALF installation,
 - One task category **Terrain** requires installing [box2d-py](https://pypi.org/project/box2d-py/).
-- Two task categories (**Manipulation** and **Locomotion**) require installing [Mujoco](http://www.mujoco.org/). Our experiments use Mujoco 2.0 and a different version might result in a different task. So we suggest using this exact version for the reproduction purpose. Please follow the instructions at ``https://github.com/openai/mujoco-py``.
+- Two task categories (**Manipulation** and **Locomotion**) require installing [Mujoco](http://www.mujoco.org/). Our experiments use Mujoco 2.0 and a different version might result in a different training result. So we suggest using this exact version for the reproduction purpose. Please follow the instructions at ``https://github.com/openai/mujoco-py``.
 - One task category **Driving** requires installing [CARLA](https://carla.org/) and we used version [0.9.9](https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/CARLA_0.9.9.tar.gz) in the experiments. Installation instructions can be found in ``<ALF_ROOT>/alf/environments/suite_carla.py``.
 
 After the installation, clone this repo under ALF:
@@ -57,7 +57,12 @@ The 14 tasks can be trained by providing the corresponding environment names to 
 The entire TASAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms/tasac_algrothm.py`.
 
 ## Troubleshooting
-* Sometimes running a job complains not finding [rsync](https://linux.die.net/man/1/rsync) (ALF uses rsync to backup training code), you just need to first install it and try again.
+* Sometimes running a job complains not finding [rsync](https://linux.die.net/man/1/rsync) (ALF uses rsync to backup training code), you just need to first install it and try again. Or simply append the flag `--nostore_snapshot` when launching the job.
+* "ModuleNotFoundError: No module named 'cnest'": In the case `cnest` is somehow missing, try
+    ```bash
+    cd <ALF_ROOT>; pip install -e ./alf/nest/cnest
+    ```
+* CARLA "Fail to start server": just give it another try.
 
 ## Reference
 If you use our TASAC algortihm, please consider citing
