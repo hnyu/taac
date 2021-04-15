@@ -6,7 +6,7 @@ This repo contains the experiment configuration files for training TASAC on 5 ca
 
 ## Installation
 
-Our experiments use the training pipelines and algorithms of [Agent Learning Framework (ALF)](https://github.com/HorizonRobotics/alf). First download and install ALF:
+Our experiments use the training pipelines and algorithms of [Agent Learning Framework (ALF)](https://github.com/HorizonRobotics/alf). Python3.7 is currently supported by ALF and [Virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for the installation. After activating a virtual env, download and install ALF:
 
 ```bash
 git clone https://github.com/HorizonRobotics/alf
