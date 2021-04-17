@@ -11,8 +11,7 @@ Our experiments use the training pipelines and algorithms of [Agent Learning Fra
 ```bash
 git clone https://github.com/HorizonRobotics/alf
 cd alf
-git fetch origin pull/842/head:tasac
-git checkout tasac
+git checkout 00576f719 -B tasac
 pip install -e .
 ```
 
