@@ -1,5 +1,5 @@
 include 'sac.gin'
-include 'tasac/experiments/common/simple_control.gin'
+include 'taac/experiments/common/simple_control.gin'
 
 Agent.optimizer=@AdamTF()
 
@@ -10,12 +10,3 @@ SacAlgorithm.use_parallel_network=True
 SacAlgorithm.target_update_tau=0.005
 sac/calc_default_target_entropy.min_prob=0.1
 SacAlgorithm.target_entropy=@sac/calc_default_target_entropy
-
-
-###### VISUALIZATION #####
-#ObservationsBuffer.capacity=50000
-#SacAlgorithm.observations_buffer=True
-#TrainerConfig.initial_collect_steps=100000
-#TrainerConfig.num_env_steps=50000
-#TrainerConfig.evaluate=False
-#TrainerConfig.num_checkpoints=1

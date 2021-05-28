@@ -1,0 +1,17 @@
+include 'taac/experiments/sac/sac_simple_control.gin'
+
+import alf.algorithms.taac_algorithm
+
+Agent.rl_algorithm_cls=@TaacAlgorithm
+
+TaacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
+TaacAlgorithm.critic_network_cls=@critic/CriticNetwork
+TaacAlgorithm.target_update_tau=0.005
+
+beta/calc_default_target_entropy.min_prob=0.05
+action/calc_default_target_entropy.min_prob=0.1
+TaacAlgorithm.target_entropy=(
+    @beta/calc_default_target_entropy,
+    @action/calc_default_target_entropy)
+
+TaacAlgorithm.critic_loss_ctor=@OneStepTDLoss

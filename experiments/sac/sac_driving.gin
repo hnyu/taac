@@ -1,5 +1,5 @@
 include 'sac.gin'
-include 'tasac/experiments/common/driving.gin'
+include 'taac/experiments/common/driving.gin'
 
 Agent.representation_learner_cls=@encoder/EncodingAlgorithm
 Agent.optimizer=@AdamTF()

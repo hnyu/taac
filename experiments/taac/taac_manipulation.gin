@@ -1,0 +1,6 @@
+include 'taac/experiments/taac_1td/taac_1td_manipulation.gin'
+
+TaacAlgorithm.critic_loss_ctor=@TAACTDLoss
+TAACTDLoss.gamma=0.98
+
+TrainerConfig.mini_batch_length=4

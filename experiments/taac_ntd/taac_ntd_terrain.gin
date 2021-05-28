@@ -1,0 +1,6 @@
+include 'taac/experiments/taac1_td/taac_1td_terrain.gin'
+
+TaacAlgorithm.critic_loss_ctor=@TDLoss
+TDLoss.td_lambda=1.
+
+TrainerConfig.mini_batch_length=6

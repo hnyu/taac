@@ -1,0 +1,18 @@
+include 'taac/experiments/sac/sac_locomotion.gin'
+
+import alf.algorithms.taac_algorithm
+
+Agent.rl_algorithm_cls=@TaacAlgorithm
+
+TaacAlgorithm.actor_network_cls=@actor/ActorDistributionNetwork
+TaacAlgorithm.critic_network_cls=@critic/CriticNetwork
+TaacAlgorithm.target_update_tau=0.005
+
+beta/calc_default_target_entropy.min_prob=0.05
+action/calc_default_target_entropy.min_prob=0.184
+TaacAlgorithm.target_entropy=(
+    @beta/calc_default_target_entropy,
+    @action/calc_default_target_entropy)
+
+TaacAlgorithm.critic_loss_ctor=@OneStepTDLoss
+TaacAlgorithm.b1_advantage_clipping=(0, None)

@@ -1,8 +1,8 @@
-# TASAC: Temporally abstract soft actor-critic for continuous control
+# TAAC: Temporally abstract actor-critic for continuous control
 
-This repo contains the experiment configuration files for training TASAC on 5 categories of 14 continuous control tasks as done in the report
+This repo contains the experiment configuration files for training TAAC on 5 categories of 14 continuous control tasks as done in the report
 
-> TASAC: Temporally Abstract Soft Actor-Critic for Continuous Control, Yu et al., arXiv 2021.
+> TAAC: Temporally Abstract Actor-Critic for Continuous Control, Yu et al., arXiv 2021.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Our experiments use the training pipelines and algorithms of [Agent Learning Fra
 ```bash
 git clone https://github.com/HorizonRobotics/alf
 cd alf
-git checkout 00576f719 -B tasac
+git checkout db89b18 -B taac
 pip install -e .
 ```
 
@@ -23,16 +23,16 @@ On top of the basic ALF installation,
 After the installation, clone this repo under ALF:
 ```bash
 cd <ALF_ROOT>/alf/examples
-git clone https://github.com/hnyu/tasac
+git clone https://github.com/hnyu/taac
 ```
 
 ## Run experiments
 
-To run an experiment (e.g., training TASAC on `BipedalWalker-v2`):
+To run an experiment (e.g., training TAAC on `BipedalWalker-v2`):
 
 ```bash
 cd <ALF_ROOT>/alf/examples
-python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --gin_file tasac/experiments/tasac/tasac_terrain.gin --gin_param="create_environment.env_name='BipedalWalker-v2'"
+python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --gin_file taac/experiments/taac/taac_terrain.gin --gin_param="create_environment.env_name='BipedalWalker-v2'"
 ```
 
 Then open the Tensorboard to view the training results
@@ -53,7 +53,7 @@ The 14 tasks can be trained by providing the corresponding environment names to 
 |`<method>_driving.gin`        |"Town01"|
 
 ## Code reading
-The entire TASAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms/tasac_algrothm.py`.
+The entire TAAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms/taac_algrothm.py`.
 
 ## Troubleshooting
 * Sometimes running a job complains not finding [rsync](https://linux.die.net/man/1/rsync) (ALF uses rsync to backup training code), you just need to first install it and try again. Or simply append the flag `--nostore_snapshot` when launching the job.
@@ -64,12 +64,12 @@ The entire TASAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms
 * CARLA "Fail to start server": just give it another try.
 
 ## Reference
-If you use our TASAC algortihm, please consider citing
+If you use our TAAC algortihm, please consider citing
 
 ```
-@article{Yu2021TASAC,
+@article{Yu2021TAAC,
     author={Haonan Yu and Wei Xu and Haichao Zhang},
-    title={TASAC: Temporally Abstract Soft Actor-Critic for Continuous Control},
+    title={TAAC: Temporally Abstract Actor-Critic for Continuous Control},
     journal={arXiv},
     year={2021}
 }

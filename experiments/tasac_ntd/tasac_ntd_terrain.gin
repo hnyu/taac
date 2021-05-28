@@ -1,8 +1,0 @@
-include 'tasac/experiments/tasac1_td/tasac_1td_terrain.gin'
-
-TasacAlgorithm.critic_loss_ctor=@TDLoss
-TDLoss.td_lambda=1.
-
-#TasacAlgorithm.observations_buffer=True
-
-TrainerConfig.mini_batch_length=6
