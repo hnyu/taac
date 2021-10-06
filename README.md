@@ -2,7 +2,7 @@
 
 This repo contains the experiment configuration files for training TAAC on 5 categories of 14 continuous control tasks as done in the report
 
-> TAAC: Temporally Abstract Actor-Critic for Continuous Control, Yu et al., arXiv 2021.
+> TAAC: Temporally Abstract Actor-Critic for Continuous Control, Yu et al., NeurIPS 2021.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Our experiments use the training pipelines and algorithms of [Agent Learning Fra
 ```bash
 git clone https://github.com/HorizonRobotics/alf
 cd alf
-git checkout db89b18 -B taac
+git checkout fb30ce1 -B taac
 pip install -e .
 ```
 
@@ -57,20 +57,16 @@ The entire TAAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms/
 
 ## Troubleshooting
 * Sometimes running a job complains not finding [rsync](https://linux.die.net/man/1/rsync) (ALF uses rsync to backup training code), you just need to first install it and try again. Or simply append the flag `--nostore_snapshot` when launching the job.
-* "ModuleNotFoundError: No module named 'cnest'": In the case `cnest` is somehow missing, try
-    ```bash
-    cd <ALF_ROOT>; pip install -e ./alf/nest/cnest
-    ```
 * CARLA "Fail to start server": just give it another try.
 
 ## Reference
 If you use our TAAC algortihm, please consider citing
 
 ```
-@article{Yu2021TAAC,
+@inproceedings{Yu2021TAAC,
     author={Haonan Yu and Wei Xu and Haichao Zhang},
     title={TAAC: Temporally Abstract Actor-Critic for Continuous Control},
-    journal={arXiv},
+    booktitle={NeurIPS},
     year={2021}
 }
 ```
