@@ -64,6 +64,7 @@ The entire TAAC algorithm is implemented in the file `<ALF_ROOT>/alf/algorithms/
 ## Troubleshooting
 * Sometimes running a job complains not finding [rsync](https://linux.die.net/man/1/rsync) (ALF uses rsync to backup training code), you just need to first install it and try again. Or simply append the flag `--nostore_snapshot` when launching the job.
 * CARLA "Fail to start server": just give it another try.
+* If any error related to not finding `Python.h` during pip installing ALF, please first install the python development package, e.g., `sudo apt install python3.7-dev`.
 
 ## Reference
 If you use our TAAC algortihm, please consider citing
